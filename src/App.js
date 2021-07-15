@@ -8,7 +8,9 @@ function App() {
     <>
       <Header />
       <main>
-        <SelectBox />
+        <section>
+          <SelectBox />
+        </section>
       </main>
       <Footer />
     </>

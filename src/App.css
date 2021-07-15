@@ -36,21 +36,26 @@ body {
 
 main {
   flex: 1 0 auto;
-  padding: 20px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
+  background-color: #000;
+  color: #61dafb;
   display: flex;
   align-items: center;
 }
 
 header h1 {
-  margin-left: -10px;
+  margin-left: -8px;
 }
 
 footer {
   background-color: #fcfcfc;
   color: #cfcfcf;
   text-align: center;
-  padding: 20px;
+  padding: 8px;
 }
