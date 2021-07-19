@@ -145,6 +145,7 @@ const Select = styled.div`
   ${SelectWrapper}:hover & {
     color: ${styles.colors.select.text.hover};
   }
+  color: ${styles.colors.select.text.default};
 
   overflow: hidden;
   height: 30px;
