@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import useClickOutside from "./useClickOutside";
@@ -6,6 +6,7 @@ import useClickOutside from "./useClickOutside";
 const SelectBox = ({options, initValue = 0}) => {
   const [label, setLabel] = useState(options[initValue].label)
   const [isActivated, setIsActivated] = useState(false)
+  const [isSelected, setIsSelected] = useState(false)
   const ref = useRef()
   useClickOutside(ref, () => setIsActivated(false))
   const optionWrapperVariants = {
@@ -29,16 +30,45 @@ const SelectBox = ({options, initValue = 0}) => {
         display: "none"
       }
     }
-  };
+  }
+  const selectTextVariants = {
+    enter: {
+      y:0,
+      transition: {
+        type: "spring",
+        stiffness: 800,
+        damping: 16
+      },
+      display: "initial"
+    },
+    exit: {
+      y:-30,
+      transition: {
+        duration: 0.1,
+        ease:"backIn"
+      },
+      transitionEnd: {
+        y: 30,
+        display: "none"
+      }
+    }
+  }
+  const prevLabel = usePrevious(label)
+  const setOption = (option) => {
+    setIsSelected(!isSelected)
+    setLabel(option)
+  }
+
   return (
     <SelectWrapper ref={ref} onClick={() => setIsActivated(!isActivated)}>
       <Select>
-        <Text>{label}</Text>
+        <Text initial="enter" animate={isSelected ? "enter" : "exit"} variants={selectTextVariants} style={{position:"absolute"}}>{isSelected ? label : prevLabel}</Text>
+        <Text initial="exit" animate={isSelected ? "exit" : "enter"} variants={selectTextVariants} style={{position:"absolute"}}>{isSelected ? prevLabel : label}</Text>
         <Arrow />
       </Select>
       <OptionWrapper initial="fold" animate={isActivated ? "spread" : "fold"} variants={optionWrapperVariants}>
         {options.map((option) => (
-        <Option key={option.value} onClick={() => setLabel(option.label)} className={option.label === label ? "active" : ""}>
+        <Option key={option.value} onClick={() => setOption(option.label)} className={option.label === label ? "active" : ""}>
           <Text>{option.label}</Text>
         </Option>
         ))}
@@ -47,6 +77,14 @@ const SelectBox = ({options, initValue = 0}) => {
   );
 }
 export default SelectBox
+
+function usePrevious(data){
+  const ref = useRef();
+  useEffect(()=>{
+    ref.current = data
+  }, [data])
+  return ref.current
+}
 
 const styles = {
   width: "158px",
@@ -59,7 +97,7 @@ const styles = {
       },
       text: {
         default: "#323232",
-        hover: "#252525",
+        hover: "#cacaca", //"#252525"
       }
     },
     option: {
@@ -86,7 +124,7 @@ const styles = {
   }
 }
 
-const SelectWrapper = styled(motion.div)`
+const SelectWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -98,8 +136,8 @@ const SelectWrapper = styled(motion.div)`
 const Select = styled.div`
   display: flex;
   flex: 1 0 auto;
-  align-items: center;
-  padding: 8px;
+  // align-items: center;
+  // padding: 0 8px;
   transition: color 200ms;
   border: 1px solid ${styles.colors.border};
   border-radius: 2px;
@@ -107,12 +145,18 @@ const Select = styled.div`
   ${SelectWrapper}:hover & {
     color: ${styles.colors.select.text.hover};
   }
+
+  overflow: hidden;
+  height: 30px;
+  flex-direction: column;
+  position: relative;
 `
 
 const Arrow = styled.div`
   position: absolute;
   left: auto;
   right: 8px;
+  padding: 14px 8px;
 
   &:before,
   &:after {
@@ -151,7 +195,7 @@ const OptionWrapper = styled(motion.div)`
 `
 
 const Option = styled.div`
-  padding: 8px;
+  // padding: 8px;
   white-space: nowrap;
   animation-fill-mode: forwards;
 
@@ -167,9 +211,10 @@ const Option = styled.div`
   }
 `
 
-const Text = styled.div`
+const Text = styled(motion.div)`
   font-size: 12px;
   flex: 1 0 auto;
   font-family: 나눔고딕, open sans, sans-serif;
   text-transform: uppercase;
+  padding: 8px;
 `
