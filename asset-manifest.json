@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/selectbox/static/css/main.decafb37.chunk.css",
-    "main.js": "/selectbox/static/js/main.426c4fd4.chunk.js",
-    "main.js.map": "/selectbox/static/js/main.426c4fd4.chunk.js.map",
+    "main.js": "/selectbox/static/js/main.7cded2a9.chunk.js",
+    "main.js.map": "/selectbox/static/js/main.7cded2a9.chunk.js.map",
     "runtime-main.js": "/selectbox/static/js/runtime-main.ff03eb08.js",
     "runtime-main.js.map": "/selectbox/static/js/runtime-main.ff03eb08.js.map",
-    "static/js/2.3cfd22fc.chunk.js": "/selectbox/static/js/2.3cfd22fc.chunk.js",
-    "static/js/2.3cfd22fc.chunk.js.map": "/selectbox/static/js/2.3cfd22fc.chunk.js.map",
+    "static/js/2.450ec924.chunk.js": "/selectbox/static/js/2.450ec924.chunk.js",
+    "static/js/2.450ec924.chunk.js.map": "/selectbox/static/js/2.450ec924.chunk.js.map",
     "static/js/3.45f8acc5.chunk.js": "/selectbox/static/js/3.45f8acc5.chunk.js",
     "static/js/3.45f8acc5.chunk.js.map": "/selectbox/static/js/3.45f8acc5.chunk.js.map",
     "index.html": "/selectbox/index.html",
     "static/css/main.decafb37.chunk.css.map": "/selectbox/static/css/main.decafb37.chunk.css.map",
-    "static/js/2.3cfd22fc.chunk.js.LICENSE.txt": "/selectbox/static/js/2.3cfd22fc.chunk.js.LICENSE.txt",
+    "static/js/2.450ec924.chunk.js.LICENSE.txt": "/selectbox/static/js/2.450ec924.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/selectbox/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ff03eb08.js",
-    "static/js/2.3cfd22fc.chunk.js",
+    "static/js/2.450ec924.chunk.js",
     "static/css/main.decafb37.chunk.css",
-    "static/js/main.426c4fd4.chunk.js"
+    "static/js/main.7cded2a9.chunk.js"
   ]
 }
