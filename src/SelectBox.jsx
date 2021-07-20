@@ -142,10 +142,11 @@ const Select = styled.div`
   border: 1px solid ${styles.colors.border};
   border-radius: 2px;
 
-  ${SelectWrapper}:hover & {
-    color: ${styles.colors.select.text.hover};
+  @media (hover: hover) {
+    ${SelectWrapper}:hover & {
+      color: ${styles.colors.select.text.hover};
+    }
   }
-  color: ${styles.colors.select.text.default};
 
   overflow: hidden;
   height: 30px;
